@@ -15,9 +15,13 @@ class SearchesController < ApplicationController
   private
 
   def get_contributions
-    if @type == "lobbyist_firm" || @type == "official"
+    if @type == "lobbyist_firm"
       @contribution = SodaRecordsContributions.find(params[:search], @type)
       @contribution_count = SodaRecordsContributions.max_contributer(params[:search], @type)
+    elsif @type == "official"
+      @contribution = SodaRecordsContributions.find(params[:search], @type)
+      @contribution_count = SodaRecordsContributions.max_contributer(params[:search], @type)
+      @all_contributions = SodaRecordsContributions.total_contributions(params[:search], @type)
     end
   end
 

@@ -6,6 +6,13 @@ class SodaRecordsContributions < SodaRecordsMain
                               "$select" => "sum(amount) AS contributions" }).first
   end
 
+  def self.total_contributions(search, type)
+    search_string = create_search_string(search, type)
+    @@client.get("rcwj-akyd", {"$where" => search_string,
+                              "$select" => "sum(amount) AS contributions, lobbyist, lobbyist_firm, official, payee, sourceoffunds",
+                              "$group" => "lobbyist, lobbyist_firm, official, payee, sourceoffunds" })
+  end
+
   def self.max_contributer(search, type)
     search_string = create_search_string(search, type)
     opposite = { "official" => "lobbyist_firm", "lobbyist_firm" => "official" }

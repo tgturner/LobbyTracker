@@ -1,19 +1,24 @@
-<h1>New Search</h1>
-<%= form_tag searches_path, method: :get, class: "navbar-form navbar-left search-form" do %>
+<div class="row">
+  <h1 class="text-center">Welcome to Lobby Tracker</h1>
+  <h2 class="text-center">Go ahead and search...</h2>
+  <%= form_tag searches_path, method: :get, class: "form-inline col-md-6 col-md-offset-4" do %>
 
-  <%= text_field_tag(
-      :search,
-      nil,
-      placeholder: "Search!",
-      class: "form-control"
-  ) %>
+    <div class="form-group">
+      <%= text_field_tag(
+          :search,
+          nil,
+          placeholder: "Search!",
+          class: "form-control"
+      ) %>
 
-  <%= select_tag :type,
-      options_for_select([["Official", "official"],
-                          ["Lobbiyst Firm", "lobbyist_firm"],
-                          ["Lobbyist Client", "lobbyist_client"],
-                          ["Municipal Decision", "municipaldecision"],
-                          ["Lobbyist", "lobbyist"]]) %>
+      <%= select_tag :type,
+          options_for_select([["Official", "official"],
+                              ["Lobbiyst Firm", "lobbyist_firm"],
+                              ["Lobbyist Client", "lobbyist_client"],
+                              ["Municipal Decision", "municipaldecision"],
+                              ["Lobbyist", "lobbyist"]]), class: "form-control" %>
+    </div>
 
-  <%= submit_tag("Search!") %>
-<% end %>
+    <%= submit_tag("Search!", class: "btn btn-primary") %>
+  <% end %>
+</div>
