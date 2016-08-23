@@ -1,24 +1,7 @@
-# README
+# LobbyTracker
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Want to know what lobbyists and firms are visiting/donating to your officials? Check out LobbyTracker. Search for a city official/lobbyist/lobbyist firm/lobbyist client in San Francisco, CA and read all about what they've been up to.
 
-Things you may want to cover:
+A project by [Graham Turner](https://www.tgturner.com)
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Checkout the deployed app on [Heroku](https://lit-atoll-92479.herokuapp.com/)
