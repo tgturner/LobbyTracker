@@ -1,0 +1,18 @@
+<h1>Lobbyist Firm: <%= @meetings.first.lobbyist_firm %></h1>
+<p>Total Political Contributions: $<%= @contribution.contributions unless @contribution == [] %></p>
+<p>Total Compensation from Clients: $<%= @payment.payments unless @payment == []  %></p>
+<% if @contribution_count %>
+  <p>Official/Issue given the most money: <%= @contribution_count.official %>:
+                          $<%= @contribution_count.contributions %></p>
+<% end %>
+<p>Official with most visits: <%= @count.official %>:
+                          <%= @count.official_count %> visits</p>
+<% @meetings.each do |meeting| %>
+  <ul>
+    <li>Official Name: <%= link_to meeting.official, searches_path(search: meeting.official, type: "official") %></li>
+    <li>Official Department: <%= meeting.official_department %></li>
+    <li>Municipal Decision: <%= link_to meeting.municipaldecision, searches_path(search: meeting.municipaldecision, type: "municipaldecision") %></li>
+    <li>Lobbyist Name: <%= link_to meeting.lobbyist, searches_path(search: meeting.lobbyist, type: "lobbyist") %></li>
+    <li>Lobbyist Client: <%= link_to meeting.lobbyist_client, searches_path(search: meeting.lobbyist_client, type: "lobbyist_client") %></li>
+  </ul>
+<% end %>

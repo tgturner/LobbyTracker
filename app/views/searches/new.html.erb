@@ -1,0 +1,19 @@
+<h1>New Search</h1>
+<%= form_tag searches_path, method: :get, class: "navbar-form navbar-left search-form" do %>
+
+  <%= text_field_tag(
+      :search,
+      nil,
+      placeholder: "Search!",
+      class: "form-control"
+  ) %>
+
+  <%= select_tag :type,
+      options_for_select([["Official", "official"],
+                          ["Lobbiyst Firm", "lobbyist_firm"],
+                          ["Lobbyist Client", "lobbyist_client"],
+                          ["Municipal Decision", "municipaldecision"],
+                          ["Lobbyist", "lobbyist"]]) %>
+
+  <%= submit_tag("Search!") %>
+<% end %>

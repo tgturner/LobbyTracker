@@ -1,0 +1,19 @@
+<h1>Lobbyist: <%= @meetings.first.lobbyist %></h1>
+<%= image_tag(@lobbyist_info.picture) %>
+<p>Works for: <%= @lobbyist_info.firmname %></p>
+<p>Address: <%= @lobbyist_info.addressline1 %> <%= @lobbyist_info.addresscity %>, <%= @lobbyist_info.addressstate %></p>
+<p>Phone: <%= @lobbyist_info.phonebusiness %></p>
+<p>Email: <%= @lobbyist_info.email %></p>
+
+<p>Official with most visits: <%= @count.official %>:
+                          <%= @count.official_count %> visits</p>
+
+<% @meetings.each do |meeting| %>
+  <ul>
+    <li>Official Name: <%= link_to meeting.official, searches_path(search: meeting.official, type: "official") %></li>
+    <li>Official Department: <%= meeting.official_department %></li>
+    <li>Lobbyist Firm: <%= link_to meeting.lobbyist_firm, searches_path(search: meeting.lobbyist_firm, type: "lobbyist_firm") %></li>
+    <li>Lobbyist Client: <%= link_to meeting.lobbyist_client, searches_path(search: meeting.lobbyist_client, type: "lobbyist_client") %></li>
+    <li>Municipal Decision: <%= link_to meeting.municipaldecision, searches_path(search: meeting.municipaldecision, type: "municipaldecision") %></li>
+  </ul>
+<% end %>
