@@ -1,18 +1,27 @@
-<h1>Lobbyist Firm: <%= @meetings.first.lobbyist_firm %></h1>
-<p>Total Political Contributions: $<%= @contribution.contributions if @contribution %></p>
-<p>Total Compensation from Clients: $<%= @payment.payments if @payment %></p>
+<h1 class="text-center">Lobbyist Firm: <%= @meetings.first.lobbyist_firm %></h1>
+<h4 class="text-center">Total Political Contributions: $<%= @contribution.contributions if @contribution %></h4>
+<h4 class="text-center">Total Compensation from Clients: $<%= @payment.payments if @payment %></h4>
 <% if @contribution_count %>
-  <p>Official/Issue given the most money: <%= @contribution_count.official %>:
-                          $<%= @contribution_count.contributions %></p>
+  <h4 class="text-center">Official/Issue given the most money: <%= @contribution_count.official %>:
+                          $<%= @contribution_count.contributions %></h4>
 <% end %>
-<p>Official with most visits: <%= @count.official %>:
-                          <%= @count.official_count %> visits</p>
-<% @meetings.each do |meeting| %>
-  <ul>
-    <li>Official Name: <%= link_to meeting.official, searches_path(search: meeting.official, type: "official") %></li>
-    <li>Official Department: <%= meeting.official_department %></li>
-    <li>Municipal Decision: <%= link_to meeting.municipaldecision, searches_path(search: meeting.municipaldecision, type: "municipaldecision") %></li>
-    <li>Lobbyist Name: <%= link_to meeting.lobbyist, searches_path(search: meeting.lobbyist, type: "lobbyist") %></li>
-    <li>Lobbyist Client: <%= link_to meeting.lobbyist_client, searches_path(search: meeting.lobbyist_client, type: "lobbyist_client") %></li>
-  </ul>
-<% end %>
+<h4 class="text-center">Official with most visits: <%= @count.official %>:
+                          <%= @count.official_count %> visits</h4>
+<table class="table table-striped table-bordered">
+  <tr>
+    <th>Official Name</th>
+    <th>Official Department</th>
+    <th>Municipal Decision</th>
+    <th>Lobbyist Name</th>
+    <th>Lobbyist Client</th>
+  </tr>
+  <% @meetings.each do |meeting| %>
+    <tr>
+      <td><%= link_to meeting.official, searches_path(search: meeting.official, type: "official") %></td>
+      <td><%= meeting.official_department %></td>
+      <td><%= link_to meeting.municipaldecision, searches_path(search: meeting.municipaldecision, type: "municipaldecision") %></td>
+      <td><%= link_to meeting.lobbyist, searches_path(search: meeting.lobbyist, type: "lobbyist") %></td>
+      <td><%= link_to meeting.lobbyist_client, searches_path(search: meeting.lobbyist_client, type: "lobbyist_client") %></td>
+    </tr>
+  <% end %>
+</table>

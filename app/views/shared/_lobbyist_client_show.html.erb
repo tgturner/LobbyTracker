@@ -1,13 +1,23 @@
-<h1>Lobbyist Client: <%= @meetings.first.lobbyist_client %></h1>
-<p>Total Compensation paid to Firms: $<%= @payment.payments if @payment  %></p>
-<p>Official with most visits: <%= @count.official %>:
-                          <%= @count.official_count %> visits</p>
-<% @meetings.each do |meeting| %>
-  <ul>
-    <li>Official Name: <%= link_to meeting.official, searches_path(search: meeting.official, type: "official" ) %></li>
-    <li>Official Department <%= meeting.official_department %></li>
-    <li>Municipal Decision: <%= link_to meeting.municipaldecision, searches_path(search: meeting.municipaldecision, type: "municipaldecision") %></li>
-    <li>Lobbyist Name: <%= link_to meeting.lobbyist, searches_path(search: meeting.lobbyist, type: "lobbyist") %></li>
-    <li>Lobbyist Firm: <%= link_to meeting.lobbyist_firm, searches_path(search: meeting.lobbyist_firm, type: "lobbyist_firm") %></li>
-  </ul>
-<% end %>
+<h1 class="text-center">Lobbyist Client: <%= @meetings.first.lobbyist_client %></h1>
+<h4 class="text-center">Total Compensation paid to Firms: $<%= @payment.payments if @payment  %></h4>
+<h4 class="text-center">Official with most visits: <%= @count.official %>:
+                          <%= @count.official_count %> visits</h4>
+
+<table class="table table-striped table-bordered">
+  <tr>
+    <th>Official Name</th>
+    <th>Official Department</th>
+    <th>Municipal Decision</th>
+    <th>Lobbyist Name</th>
+    <th>Lobbyist Firm</th>
+  </tr>
+  <% @meetings.each do |meeting| %>
+    <tr>
+      <td><%= link_to meeting.official, searches_path(search: meeting.official, type: "official" ) %></td>
+      <td><%= meeting.official_department %></td>
+      <td><%= link_to meeting.municipaldecision, searches_path(search: meeting.municipaldecision, type: "municipaldecision") %></td>
+      <td><%= link_to meeting.lobbyist, searches_path(search: meeting.lobbyist, type: "lobbyist") %></td>
+      <td><%= link_to meeting.lobbyist_firm, searches_path(search: meeting.lobbyist_firm, type: "lobbyist_firm") %></td>
+    </tr>
+  <% end %>
+</table>
