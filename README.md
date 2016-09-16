@@ -14,3 +14,4 @@ All information is accessed directly from the API, not persisted in the database
 LobbyTracker was voted as best overall application, best use of API, most useful for users, and best in architecture design by Hack-A-Thon participants.
 
 Checkout the deployed app on [Heroku](https://lit-atoll-92479.herokuapp.com/)
+If you don't know the name of any San Francisco City Officials, try London Breed.
